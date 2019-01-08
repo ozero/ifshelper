@@ -8,6 +8,9 @@ Running at https://fs.currentdir.com/
 
 PHP, Mysql
 
+- See /lib/lib.php for DB schema.
+- See /config/config.sample.ini for configration.
+
 ## Disclaimer
 
 Not officially affiliated with Ingress or Niantic Labs.
