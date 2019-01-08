@@ -1,0 +1,90 @@
+#nav{
+  font-size: 11px;
+  color:#eee;
+  background-color: #068;
+  padding:10px 6px;
+}
+#container{
+  padding:10px;
+}
+
+h3{
+  border:1px solid #999;
+  border-width: 0 0 1px 0;
+  margin:2em 0 1em 0;
+  padding-bottom:3px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+h4{
+  border:1px solid #ccc;
+  border-width: 0 0 1px 0;
+  margin:2em 0 1em 0;
+  padding-bottom:1px;
+  font-size:14px;
+  font-weight:bold;
+  line-height:20px;
+}
+
+p{
+  margin:0;
+  padding:0;
+}
+ul{
+  padding-bottom:0.4em;
+}
+.td-right{
+  text-align: right;
+}
+
+.num{
+  text-align: right;
+  font-family:monospace;
+  font-size:12px;
+  color:#ff6600;
+}
+
+.div-center{
+  text-align: center;
+}
+
+.fl{float:left;}
+.fr{float: right;}
+.cf{clear: both;}
+
+.caption{
+  font-size:80%;color:#999;
+}
+
+/* edit.php */
+.tbl_menu input[type="text"]{
+  width:70%;
+}
+
+/* coding.php */
+.multicolumnbox {
+  display: flex;
+}
+
+.numeric{
+  text-align:right;
+  font-family: monospace;
+  font-size:14px;
+  color:#ff6600;
+}
+.member_numeric input[type="number"]{
+  width:100%;
+  text-align:right;
+  font-size:16px;
+  font-family: monospace;
+}
+
+#dv_advanced_setting{
+  margin:2px;
+  border:10px solid #f00;
+  padding:12px;
+  color:#ff0000;
+  background-color:#330000;
+}
+
