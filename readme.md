@@ -2,7 +2,7 @@
 
 PHP Scripts for Website to help count LV, AP & Trekker gains on Ingress FS event.
 
-Running at https://fs.currentdir.com/
+Running at https://fs.currentdir.com/ , contact @ozero_rgfx on Telegram for detail.
 
 ## Requisites
 
