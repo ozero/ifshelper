@@ -15,7 +15,6 @@ https://test.currentdir.com/fs/
 idがイベント名っぽいやつ
 passが日付っぽい4桁、リーダーならfs+日付っぽい4桁とかかなあ。
 
-
 */
 
 //
@@ -35,10 +34,27 @@ if(isset($_POST['arg'])){
   }
 }
 
+//available:0 : ok for all 当日公開
+//available:1 : ok for only HQ, admin 準備段階
+//available:2 : ok for only admin お蔵入りデータ
+//available:3 : ok for all アーカイブ状態
+
+//Available for event
 $_view['events'] = $db->fetchAll(
-  "select * from events where available < 2 order by eventdate, name",
+  "select * from events where available = 0 order by eventdate, name",
   []
 );
+//Upcoming for HQ
+$_view['events_upcoming'] = $db->fetchAll(
+  "select * from events where available = 1 order by eventdate DESC, name",
+  []
+);
+//Archived for participants
+$_view['events_archived'] = $db->fetchAll(
+  "select * from events where available = 3 order by eventdate DESC, name",
+  []
+);
+
 $_view['title'] = "Auth";
 $_view['back_href'] = "";
 
@@ -55,12 +71,28 @@ $_view['back_href'] = "";
   <td>Event:</td>
   <td>
   <select name="arg[event]">
-    <?php foreach($_view['events'] as $v0){ ?>
-    <option value="<?php e($v0['id']); ?>">
-      <?php e($v0['name']); ?> (<?php e($v0['eventdate']); ?>)
-    </option>
-    <?php } ?>
-    <option value="manager">( Event manager )</option>
+    <optgroup label="Select your FS">
+      <?php foreach($_view['events'] as $v0){ ?>
+      <option value="<?php e($v0['id']); ?>">
+        <?php e($v0['name']); ?> (<?php e($v0['eventdate']); ?>)
+      </option>
+      <?php } ?>
+    </optgroup>
+    <optgroup label="Upcoming">
+      <?php foreach($_view['events_upcoming'] as $v0){ ?>
+      <option value="<?php e($v0['id']); ?>">
+        <?php e($v0['name']); ?> (<?php e($v0['eventdate']); ?>)
+      </option>
+      <?php } ?>
+    </optgroup>
+    <optgroup label="Archived">
+      <?php foreach($_view['events_archived'] as $v0){ ?>
+      <option value="<?php e($v0['id']); ?>">
+        <?php e($v0['name']); ?> (<?php e($v0['eventdate']); ?>)
+      </option>
+      <?php } ?>
+      <option value="manager">( Event manager )</option>
+    </optgroup>
   </select>
   </td>
   </tr>
@@ -139,6 +171,14 @@ function auth($db, $arg){
           $_SESSION['flash']['message'] = "👷 This event is not ready.";
           priveledge_fail();
         }
+        break;
+      case 3://available:3 : ok for all (Archived)
+        if($_SESSION['auth_role'] == "leaders"){
+          $_SESSION['auth_role'] = "agents";//drop role to Agents
+        }
+        $_SESSION['flash']['class'] = "warning";
+        $_SESSION['flash']['message'] = "👷 This event was archived.";
+        priveledge_success($_SESSION['auth_role']);
         break;
     }
     

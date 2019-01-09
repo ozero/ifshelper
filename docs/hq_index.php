@@ -62,13 +62,13 @@ $_view['leders_login'] = SITEROOT."/auth.php?key=".SHORTHAND_PASS
           value="<?php e($_view['event'][0]['name']); ?>"></td>
       </tr>
       <tr>
-        <td>Event ENABLED</td>
+        <td>Event Status</td>
         <td>
         <select name="arg[available]">
-          <option value="0" <?php echo ($_view['event'][0]['available'] === 0)?"selected":""; ?>>Enabled</option>
-          <option value="1" <?php echo ($_view['event'][0]['available'] === 1)?"selected":""; ?>>Disabled</option>
+          <option value="1" <?php echo ($_view['event'][0]['available'] === 1)?"selected":""; ?>>Not in service. HQ Only.</option>
+          <option value="0" <?php echo ($_view['event'][0]['available'] === 0)?"selected":""; ?>>Leaders can input STATS.</option>
+          <option value="3" <?php echo ($_view['event'][0]['available'] === 3)?"selected":""; ?>>Archived. STATS are readonly.</option>
         </select>
-        &nbsp; <span style="font-size:80%;color:#999;">(for Leaders, Agents)</span>
         </td>
       </tr>
       <tr>
