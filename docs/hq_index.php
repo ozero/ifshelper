@@ -43,6 +43,7 @@ $_view['leders_login'] = SITEROOT."/auth.php?key=".SHORTHAND_PASS
   </h3>
   <a href="./hq_bulkload.php" class="btn btn-secondary">Agent Bulkloader</a>
   <a href="./hq_bulkteamload.php" class="btn btn-secondary">Team Bulkloader</a>
+  <a href="./hq_importifs.php" class="btn btn-secondary">FevGames IFS Bulkloader</a>
   <a href="./hq_export_fevg.php" class="btn btn-default btn-outline-secondary">Export:Report for FevGames</a>
 
   <h3>
