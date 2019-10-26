@@ -70,7 +70,7 @@ $_view['back_href'] = "";
   <tr>
   <td>Event:</td>
   <td>
-  <select name="arg[event]">
+  <select name="arg[event]" style="width:16em;">
     <optgroup label="Select your FS">
       <?php foreach($_view['events'] as $v0){ ?>
       <option value="<?php e($v0['id']); ?>">
@@ -138,20 +138,20 @@ function auth($db, $arg){
   if(!isset($event[0]['id'])){
     priveledge_fail();//event not found
   }else{
-    
+
     if($arg['password'] == $event[0]['pass_hq']){
       $_SESSION['auth_role'] = "hq";
-      
+
     }elseif($arg['password'] == $event[0]['pass_leaders']){
       $_SESSION['auth_role'] = "leaders";
-      
+
     }elseif($arg['password'] == $event[0]['pass_agents']){
       $_SESSION['auth_role'] = "agents";
-      
+
     }else{
       priveledge_fail();
     }
-    
+
     //get event metadata
     $_SESSION['event'] = $event[0];
 
@@ -181,7 +181,7 @@ function auth($db, $arg){
         priveledge_success($_SESSION['auth_role']);
         break;
     }
-    
+
 
     //Flash message
     $_SESSION['flash']['class'] = "success";
